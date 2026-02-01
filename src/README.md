@@ -52,6 +52,17 @@ MongoDB is automatically installed and started when you create the Codespace. If
    - API documentation: http://localhost:8000/docs
    - Alternative documentation: http://localhost:8000/redoc
 
+## Checking MongoDB Status
+
+To check if MongoDB is running:
+
+```bash
+bash check-mongodb-status.sh
+```
+
+Or see the detailed guide:
+- 📖 **MongoDB Status Check Guide**: [MONGODB_STATUS_CHECK.md](../MONGODB_STATUS_CHECK.md) (日本語)
+
 ## Troubleshooting
 
 If you see "HTTP ERROR 502" or MongoDB connection errors:

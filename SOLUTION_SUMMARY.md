@@ -5,6 +5,16 @@
 ### 問題の原因
 ポートタブからウェブページを開こうとしたときに発生する **HTTP ERROR 502** は、**MongoDBが起動していない**ことが原因です。
 
+### MongoDBの状態を確認
+MongoDBが起動しているか確認するには：
+
+```bash
+bash check-mongodb-status.sh
+```
+
+詳細な確認手順は：
+- 📖 [MONGODB_STATUS_CHECK.md](./MONGODB_STATUS_CHECK.md) (MongoDB起動状況確認ガイド)
+
 ### 解決方法
 ターミナルで以下のコマンドを実行してください：
 
@@ -30,6 +40,16 @@
 
 ### Root Cause
 The **HTTP ERROR 502** that occurs when opening the webpage from the Ports tab is caused by **MongoDB not running**.
+
+### Check MongoDB Status
+To check if MongoDB is running:
+
+```bash
+bash check-mongodb-status.sh
+```
+
+For detailed checking procedures, see:
+- 📖 [MONGODB_STATUS_CHECK.md](./MONGODB_STATUS_CHECK.md) (MongoDB Status Check Guide)
 
 ### Solution
 Run this command in the terminal:
@@ -62,6 +82,7 @@ For a complete diagnostic guide, see:
 
 2. **src/README.md**
    - Added Prerequisites section
+   - Added MongoDB Status Check section
    - Added Troubleshooting section
    - Updated Getting Started instructions
 
@@ -70,6 +91,15 @@ For a complete diagnostic guide, see:
 
 4. **TROUBLESHOOTING_502_ERROR_EN.md** (NEW)
    - English troubleshooting guide
+
+5. **MONGODB_STATUS_CHECK.md** (NEW)
+   - Japanese MongoDB status check guide
+   - Step-by-step procedures to verify MongoDB is running
+
+6. **check-mongodb-status.sh** (NEW)
+   - Automated script to check MongoDB status
+   - Provides clear bilingual output
+   - Multiple verification checks
 
 ### Before vs After
 
