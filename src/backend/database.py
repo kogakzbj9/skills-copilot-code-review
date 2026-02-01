@@ -3,6 +3,7 @@ MongoDB database configuration and setup for Mergington High School API
 """
 
 from pymongo import MongoClient
+from pymongo import errors as pymongo_errors
 from argon2 import PasswordHasher, exceptions as argon2_exceptions
 
 # Connect to MongoDB with timeout and server selection
@@ -44,9 +45,6 @@ def init_database():
     """Initialize database if empty"""
     
     try:
-        # Test connection first
-        client.admin.command('ping')
-        
         # Initialize activities if empty
         if activities_collection.count_documents({}) == 0:
             for name, details in initial_activities.items():
@@ -57,7 +55,7 @@ def init_database():
             for teacher in initial_teachers:
                 teachers_collection.insert_one(
                     {"_id": teacher["username"], **teacher})
-    except Exception as e:
+    except (pymongo_errors.ServerSelectionTimeoutError, pymongo_errors.ConnectionFailure) as e:
         error_msg = f"""
         ╔════════════════════════════════════════════════════════════════╗
         ║  ERROR: Could not connect to MongoDB                           ║
