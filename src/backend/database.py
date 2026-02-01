@@ -57,26 +57,26 @@ def init_database():
                     {"_id": teacher["username"], **teacher})
     except (pymongo_errors.ServerSelectionTimeoutError, pymongo_errors.ConnectionFailure) as e:
         error_msg = f"""
-        ╔════════════════════════════════════════════════════════════════╗
-        ║  ERROR: Could not connect to MongoDB                           ║
-        ╠════════════════════════════════════════════════════════════════╣
-        ║                                                                ║
-        ║  The application requires MongoDB to be running.               ║
-        ║                                                                ║
-        ║  To start MongoDB, run:                                        ║
-        ║    ./.devcontainer/startMongoDB.sh                             ║
-        ║                                                                ║
-        ║  Or manually:                                                  ║
-        ║    sudo mongod --fork --logpath /var/log/mongodb/mongod.log   ║
-        ║                                                                ║
-        ║  For detailed troubleshooting, see:                            ║
-        ║    TROUBLESHOOTING_502_ERROR.md (日本語)                       ║
-        ║    TROUBLESHOOTING_502_ERROR_EN.md (English)                   ║
-        ║                                                                ║
-        ╚════════════════════════════════════════════════════════════════╝
-        
-        Technical error: {str(e)}
-        """
+╔════════════════════════════════════════════════════════════════╗
+║  ERROR: Could not connect to MongoDB                           ║
+╠════════════════════════════════════════════════════════════════╣
+║                                                                ║
+║  The application requires MongoDB to be running.               ║
+║                                                                ║
+║  To start MongoDB, run:                                        ║
+║    ./.devcontainer/startMongoDB.sh                             ║
+║                                                                ║
+║  Or manually:                                                  ║
+║    sudo mongod --fork --logpath /var/log/mongodb/mongod.log   ║
+║                                                                ║
+║  For detailed troubleshooting, see:                            ║
+║    TROUBLESHOOTING_502_ERROR.md (日本語)                       ║
+║    TROUBLESHOOTING_502_ERROR_EN.md (English)                   ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+Technical error: {str(e)}
+"""
         raise ConnectionError(error_msg) from e
 
 
