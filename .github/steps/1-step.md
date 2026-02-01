@@ -34,9 +34,11 @@ Before we start developing and reviewing, let's take a moment to understand the 
    <img width="300" alt="copilot extension for VS Code" src="https://github.com/user-attachments/assets/ef1ef984-17fc-4b20-a9a6-65a866def468" /><br/>
    <img width="300" alt="python extension for VS Code" src="https://github.com/user-attachments/assets/3040c0f5-1658-47e2-a439-20504a384f77" />
 
-1. Try running the application. In the left sidebar, select the **Run and Debug** tab and then press the **Start Debugging** icon.
+1. Try running the application. In the left sidebar, select the **Run and Debug** tab and then press the **Start Debugging** icon. You should see a debug configuration named **"Launch Mergington WebApp"**.
 
    <img width="300" alt="run and debug" src="https://github.com/user-attachments/assets/50b27f2a-5eab-4827-9343-ab5bce62357e" />
+   
+   > **Note:** The launch configuration is named "Launch Mergington WebApp" - this is the correct name for this project.
 
    <details>
    <summary>🤷 Having trouble?</summary><br/>
