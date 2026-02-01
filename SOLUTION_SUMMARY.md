@@ -5,6 +5,8 @@
 ### 問題の原因
 ポートタブからウェブページを開こうとしたときに発生する **HTTP ERROR 502** は、**MongoDBが起動していない**ことが原因です。
 
+**重要**: Codespacesでは、MongoDBは自動的に起動されるように設定されています。起動していない場合は、何らかの問題が発生しています。詳細は [MONGODB_AUTOSTART.md](./MONGODB_AUTOSTART.md) を参照してください。
+
 ### MongoDBの状態を確認
 MongoDBが起動しているか確認するには：
 
@@ -40,6 +42,8 @@ bash check-mongodb-status.sh
 
 ### Root Cause
 The **HTTP ERROR 502** that occurs when opening the webpage from the Ports tab is caused by **MongoDB not running**.
+
+**Important**: In Codespaces, MongoDB is configured to start automatically. If it's not running, something went wrong. See [MONGODB_AUTOSTART.md](./MONGODB_AUTOSTART.md) for details.
 
 ### Check MongoDB Status
 To check if MongoDB is running:
@@ -100,6 +104,20 @@ For a complete diagnostic guide, see:
    - Automated script to check MongoDB status
    - Provides clear bilingual output
    - Multiple verification checks
+
+7. **MONGODB_STATUS_CHECK_EN.md** (NEW)
+   - English MongoDB status check guide
+   - Same comprehensive procedures as Japanese version
+
+8. **MONGODB_QUICK_REFERENCE.md** (NEW)
+   - Quick reference card for common MongoDB commands
+   - Bilingual (Japanese/English)
+   - Links to all documentation
+
+9. **MONGODB_AUTOSTART.md** (NEW)
+   - Explains expected auto-start behavior
+   - Troubleshooting for auto-start failures
+   - Codespace configuration details
 
 ### Before vs After
 

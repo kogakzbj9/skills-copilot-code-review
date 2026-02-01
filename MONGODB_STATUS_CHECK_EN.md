@@ -2,6 +2,16 @@
 
 This guide explains how to verify if MongoDB is running properly.
 
+## ⚠️ Important: MongoDB Auto-Start is Expected
+
+**In Codespaces, MongoDB is configured to start automatically.**
+
+- Auto-install & start when Codespace is first created
+- Auto-start every time Codespace starts/resumes
+
+If MongoDB is not running, something went wrong.
+See [MONGODB_AUTOSTART.md](./MONGODB_AUTOSTART.md) for details.
+
 ## 🚀 Quick Check (Recommended)
 
 The easiest way is to use the provided script:

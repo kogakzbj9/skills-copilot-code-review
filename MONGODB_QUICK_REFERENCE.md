@@ -1,5 +1,15 @@
 # MongoDB クイックリファレンス / MongoDB Quick Reference
 
+## ⚠️ 重要 / Important
+
+**MongoDBは自動起動が期待値です / MongoDB auto-start is expected**
+
+Codespacesでは自動的に起動されます。起動していない場合は問題があります。
+詳細: [MONGODB_AUTOSTART.md](./MONGODB_AUTOSTART.md)
+
+In Codespaces, it starts automatically. If not running, there's an issue.
+Details: [MONGODB_AUTOSTART.md](./MONGODB_AUTOSTART.md)
+
 ## 🚀 最速チェック / Quick Check
 
 ```bash
