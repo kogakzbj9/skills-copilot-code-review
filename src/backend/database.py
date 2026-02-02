@@ -3,10 +3,15 @@ MongoDB database configuration and setup for Mergington High School API
 """
 
 from pymongo import MongoClient
+from pymongo import errors as pymongo_errors
 from argon2 import PasswordHasher, exceptions as argon2_exceptions
 
-# Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')
+# Connect to MongoDB with timeout and server selection
+client = MongoClient(
+    'mongodb://localhost:27017/',
+    serverSelectionTimeoutMS=5000,  # 5 second timeout
+    connectTimeoutMS=5000
+)
 db = client['mergington_high']
 activities_collection = db['activities']
 teachers_collection = db['teachers']
@@ -38,17 +43,41 @@ def verify_password(hashed_password: str, plain_password: str) -> bool:
 
 def init_database():
     """Initialize database if empty"""
+    
+    try:
+        # Initialize activities if empty
+        if activities_collection.count_documents({}) == 0:
+            for name, details in initial_activities.items():
+                activities_collection.insert_one({"_id": name, **details})
 
-    # Initialize activities if empty
-    if activities_collection.count_documents({}) == 0:
-        for name, details in initial_activities.items():
-            activities_collection.insert_one({"_id": name, **details})
+        # Initialize teacher accounts if empty
+        if teachers_collection.count_documents({}) == 0:
+            for teacher in initial_teachers:
+                teachers_collection.insert_one(
+                    {"_id": teacher["username"], **teacher})
+    except (pymongo_errors.ServerSelectionTimeoutError, pymongo_errors.ConnectionFailure) as e:
+        error_msg = f"""
+╔════════════════════════════════════════════════════════════════╗
+║  ERROR: Could not connect to MongoDB                           ║
+╠════════════════════════════════════════════════════════════════╣
+║                                                                ║
+║  The application requires MongoDB to be running.               ║
+║                                                                ║
+║  To start MongoDB, run:                                        ║
+║    ./.devcontainer/startMongoDB.sh                             ║
+║                                                                ║
+║  Or manually:                                                  ║
+║    sudo mongod --fork --logpath /var/log/mongodb/mongod.log   ║
+║                                                                ║
+║  For detailed troubleshooting, see:                            ║
+║    TROUBLESHOOTING_502_ERROR.md (日本語)                       ║
+║    TROUBLESHOOTING_502_ERROR_EN.md (English)                   ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
 
-    # Initialize teacher accounts if empty
-    if teachers_collection.count_documents({}) == 0:
-        for teacher in initial_teachers:
-            teachers_collection.insert_one(
-                {"_id": teacher["username"], **teacher})
+Technical error: {str(e)}
+"""
+        raise ConnectionError(error_msg) from e
 
 
 # Initial database if empty
